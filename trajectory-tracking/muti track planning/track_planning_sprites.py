@@ -60,7 +60,7 @@ class CarSimulation(pygame.sprite.Sprite):
         self.positionx += self.car_speedx
         self.positiony += self.car_speedy
         LINES_LIST.append((self.positionx,self.positiony))
-        # 控制英雄不能离开屏幕
+        # 控制小车不能离开屏幕
         if (self.positionx - CAR_SIZE/2)< 0:
             self.positionx = CAR_SIZE/2
         elif (self.positionx + CAR_SIZE/2)> SCREEN_RECT.right:
