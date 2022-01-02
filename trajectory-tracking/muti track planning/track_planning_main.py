@@ -2,6 +2,8 @@ import pygame
 from pygame import gfxdraw
 from track_planning_sprites import *
 
+
+
 class TrackGame(object):
     def __init__(self):
         print("游戏初始化")
@@ -35,10 +37,30 @@ class TrackGame(object):
             # 5. 更新显示
             pygame.display.update()
 
+    def detection_error(self):
+        b = 0
+        c = 0
+        for i in range(1,720):
+            for j in range(1,720):
+                a = tuple(pygame.Surface.get_at(self.screen,(i,j)))
+                if a == (255,0,0,255):
+                    b += 1
+                    POINT_COLOUR_xy.append((i,j))
+        for i in LINES_LIST:
+            if not i in LINES_LIST_NEW:
+                LINES_LIST_NEW.append(i)
+        for i in LINES_LIST:
+            for j in POINT_COLOUR_xy:
+                if i[0] == j[0]:
+                    c += abs(i[1]-j[1])
+        print(c)
+                
+
     def __event_handler(self):
         for event in pygame.event.get():
             # 判断是否退出游戏
             if event.type == pygame.QUIT:
+                self.detection_error()
                 TrackGame.__game_over()
                 # 使用键盘提供的方法获取键盘按键 - 按键元组
         keys_pressed = pygame.key.get_pressed()
