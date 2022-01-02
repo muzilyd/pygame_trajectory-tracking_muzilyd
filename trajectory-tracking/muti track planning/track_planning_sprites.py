@@ -13,8 +13,11 @@ TARGET_POSITION = [600,150]
 CAR_SIZE = 10
 # 圆形小车颜色
 CAR_COLOUR = [0,0,0]
+# 使用连线命令画小车移动轨迹时需要两个初始点（就是你定义的小车初始坐标点）
 LINES_LIST = [(100,620),(100,620)]
-
+LINES_LIST_NEW = []
+POINT_COLOUR = []
+POINT_COLOUR_xy = []
 
 class TrackSprite(pygame.sprite.Sprite):
     """轨迹规划游戏精灵"""
