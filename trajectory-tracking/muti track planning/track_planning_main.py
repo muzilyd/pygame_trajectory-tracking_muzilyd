@@ -49,7 +49,7 @@ class TrackGame(object):
         for i in LINES_LIST:
             if not i in LINES_LIST_NEW:
                 LINES_LIST_NEW.append(i)
-        for i in LINES_LIST:
+        for i in LINES_LIST_NEW:
             for j in POINT_COLOUR_xy:
                 if i[0] == j[0]:
                     c += abs(i[1]-j[1])
