@@ -15,8 +15,7 @@ CAR_SIZE = 10
 CAR_COLOUR = [0,0,0]
 # 使用连线命令画小车移动轨迹时需要两个初始点（就是你定义的小车初始坐标点）
 LINES_LIST = [(100,620),(100,620)]
-LINES_LIST_NEW = []
-POINT_COLOUR = []
+# POINT_COLOUR = []
 POINT_COLOUR_xy = []
 
 class TrackSprite(pygame.sprite.Sprite):
@@ -55,14 +54,14 @@ class CarSimulation(pygame.sprite.Sprite):
         self.positionx = positionx
         self.positiony = positiony
         self.k = k
-    
+        self.LINES_LIST = LINES_LIST
     def car_add(self,car_screen):
         pygame.draw.circle(car_screen,CAR_COLOUR,[self.positionx,self.positiony],CAR_SIZE,0)  #最后一个0表示填充，数字代表线宽
     
     def car_update(self):
         self.positionx += self.car_speedx
         self.positiony += self.car_speedy
-        LINES_LIST.append((self.positionx,self.positiony))
+        self.LINES_LIST.append((self.positionx,self.positiony))
         # 控制小车不能离开屏幕
         if (self.positionx - CAR_SIZE/2)< 0:
             self.positionx = CAR_SIZE/2
